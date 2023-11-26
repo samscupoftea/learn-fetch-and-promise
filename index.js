@@ -33,21 +33,17 @@ const myForm = document.querySelector("form");
 
 myForm.addEventListener("submit", event => {
     event.preventDefault();
-    const name =
-
-});
-
-
+    const name = document.querySelector("#name").value;
+    const email = document.querySelector("#email").value;
+    const data = { name, email };
 
 
-const data = { name: "oli "};
 
 fetch("https://echo.oliverjam.workers.dev/json",{
     method: "POST",
     body: JSON.stringify(data),
     headers: { "content-type": "application/json"},
-}
-)
+})
 .then((response) =>{
     if(!response.ok) throw new Error(response.status);
     return response.json();
@@ -56,3 +52,4 @@ fetch("https://echo.oliverjam.workers.dev/json",{
 .catch((error) => console.error(error));
 
 
+});
